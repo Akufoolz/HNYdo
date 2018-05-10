@@ -1,36 +1,25 @@
-Vue.component('todo-item', {
-    props: ['todo'],
-    template: 
-`
-<div class="card">
-    <div class="level is-mobile">
-        <div class="level-left">
-            <div class="level-item">
-                <span class="icon is-medium has-text-grey-light">
-                    <i class="fas fa-lg fa-check-square"></i>
-                </span>
-            </div>
-            <div class="level-item">
-                <span class="title is-5">{{ todo.text }}</span>
-            </div>
-        </div>
-        <div class="level-right">
-            <div class="level-item">
-                <button class="delete"></button>
-            </div>
-        </div>
-    </div>
-</div>
-`
-})
+Vue.component('item', {
+    template: '#item-template',
+    props: ['item']
+});
+
 var activeList = new Vue({
     el: '#activeList',
+    template: '#activeList-template',
     data: {
-       todoItems: [
-           { id: 0, text: "Hello, World!"},
-           { id: 1, text: "Punch the baby's face"},
-           { id: 2, text: "Kiss the Honey Bunny"}
-       ]
+        items: [
+            { id: 0, text: "Hello, World!" },
+            { id: 1, text: "Punch the baby's face" },
+            { id: 2, text: "Kiss the Honey Bunny" }
+        ]
+    },
+    methods: {
+        removeItem: function(key) {
+            this.items.forEach(element => {
+                if (element.id == key){
+                    this.items.splice(this.items.indexOf(element), 1);
+                }
+            });
+        }
     }
-})
-
+});
