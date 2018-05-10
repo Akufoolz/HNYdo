@@ -37,7 +37,11 @@
                 </div>
             </section>
             <div class="container">
-                <item v-for="item in items" :item="item" :key="item.id" v-on:remove-item="removeItem(item.id)">
+                <item 
+                v-for="item in items" 
+                :item="item" 
+                :key="item.id" 
+                v-on:remove-item="removeItem(item.id)">
                 </item>
             </div>
         </section>
@@ -48,7 +52,7 @@
             <div class="level is-mobile">
                 <div class="level-left">
                     <div class="level-item">
-                        <span class="icon is-medium has-text-grey-light">
+                        <span class="icon is-medium" v-bind:class="{ 'has-text-grey-light': notComplete, 'has-text-primary': isMarked }" @click="toggleMark">
                             <i class="fas fa-lg fa-check-square"></i>
                         </span>
                     </div>

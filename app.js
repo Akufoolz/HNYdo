@@ -1,6 +1,18 @@
 Vue.component('item', {
     template: '#item-template',
-    props: ['item']
+    props: ['item'],
+    data: function() {
+        return {
+            notComplete: true,
+            isMarked: false
+        }
+    },
+    methods: {
+        toggleMark() {
+            this.notComplete = !this.notComplete;
+            this.isMarked = !this.isMarked;
+        }
+    }
 });
 
 var activeList = new Vue({
